@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Java Tutoring with Katrina</title>
 
-  <!-- Flatpickr styles -->
+  <!-- Flatpickr styles (can be removed if unused elsewhere) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -56,13 +56,6 @@
     </iframe>
   </section>
 
-  <!-- Time Slot Picker -->
-  <section class="glass-card jelly">
-    <h2>Book a Time Slot</h2>
-    <input type="text" id="datetime" placeholder="Select date and time" />
-    <div id="status"></div>
-  </section>
-
   <!-- Tutoring Calendar -->
   <section class="glass-card jelly">
     <h2>My Tutoring Calendar</h2>
@@ -75,30 +68,10 @@
   </section>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="calendarPicker.js"></script>
   <script src="auth.js"></script>
-
-  <!-- Time Theme Script -->
   <script type="module">
     import { applyTheme } from './theme.js';
     applyTheme();
   </script>
-  <script>
-  const jiggleElements = document.querySelectorAll('.glass-card');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('jiggle');
-        setTimeout(() => entry.target.classList.remove('jiggle'), 500);
-      }
-    });
-  }, {
-    threshold: 0.3
-  });
-
-  jiggleElements.forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
