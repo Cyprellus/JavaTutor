@@ -34,16 +34,6 @@ body {
   100% { transform: scale(1); }
 }
 
-/* Jiggle effect */
-@keyframes jiggleY {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(2px); }
-  100% { transform: translateY(0); }
-}
-
-body.jiggling {
-  animation: jiggleY 0.3s ease-in-out;
-}
 
 /* Text styling */
 h1, h2, p, li {
@@ -56,19 +46,6 @@ a {
   text-decoration: none;
 }
 
-input[type="text"] {
-  padding: 10px;
-  font-size: 1em;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-
-#status {
-  margin-top: 10px;
-  font-weight: bold;
-}
 
 /* Background container */
 .background {
