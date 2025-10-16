@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Tutoring with Katrina</title>
+
+  <!-- Flatpickr styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Time-based background container -->
+  <div id="background" class="background">
+    <div class="cloud-layer">
+      <img src="cloud.png" class="cloud cloud-front" />
+      <img src="cloud.png" class="cloud cloud-mid" />
+      <img src="cloud.png" class="cloud cloud-back" />
+      <img src="cloud.png" class="cloud cloud-front" />
+      <img src="cloud.png" class="cloud cloud-mid" />
+      <img src="cloud.png" class="cloud cloud-back" />
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="glass-card jelly">
+    <h1>Java Tutoring with Katrina</h1>
+    <p><a href="mailto:Wilkerson.katrina@student.greenriver.edu">Wilkerson.katrina@student.greenriver.edu</a></p>
+  </header>
+
+  <!-- Availability -->
+  <section class="glass-card jelly">
+    <h2>Availability</h2>
+    <p>Monday–Thursday, 11:00 AM – 1:00 PM</p>
+  </section>
+
+  <!-- Pricing -->
+  <section class="glass-card jelly">
+    <h2>Pricing</h2>
+    <ul>
+      <li>First session: <strong>Free</strong></li>
+      <li>Each additional 1-hour session: <strong>$15</strong></li>
+    </ul>
+  </section>
+
+  <!-- Signup Form -->
+  <section class="glass-card jelly" style="overflow-y: auto; max-height: 650px;">
+    <h2>Sign Up</h2>
+    <p>Fill out the form below to request a tutoring session:</p>
+    <iframe 
+      src="https://forms.gle/xGR8zqCkSMBd9gSj8" 
+      style="border: 0; width: 100%; height: 600px;" 
+      frameborder="0" 
+      scrolling="yes">
+      Loading…
+    </iframe>
+  </section>
+
+  <!-- Time Slot Picker -->
+  <section class="glass-card jelly">
+    <h2>Book a Time Slot</h2>
+    <input type="text" id="datetime" placeholder="Select date and time" />
+    <div id="status"></div>
+  </section>
+
+  <!-- Tutoring Calendar -->
+  <section class="glass-card jelly">
+    <h2>My Tutoring Calendar</h2>
+    <iframe 
+      src="https://calendar.google.com/calendar/embed?src=52969672782be8b3f4f2e18178ec9fdc6384499ea05bafb851c6d033e950680d%40group.calendar.google.com&ctz=America%2FLos_Angeles" 
+      style="border: 0; width: 100%; height: 600px;" 
+      frameborder="0" 
+      scrolling="yes">
+    </iframe>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="calendarPicker.js"></script>
+  <script src="auth.js"></script>
+
+  <!-- Time Theme Script -->
+  <script type="module">
+    import { applyTheme } from './theme.js';
+    applyTheme();
+  </script>
+  <script>
+  const jiggleElements = document.querySelectorAll('.glass-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('jiggle');
+        setTimeout(() => entry.target.classList.remove('jiggle'), 500);
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  jiggleElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

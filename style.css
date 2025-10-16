@@ -1,0 +1,236 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  font-size: 16px;
+  background-color: #000;
+  transition: transform 0.2s ease;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  animation: jelly 1.5s ease;
+  box-sizing: border-box;
+}
+
+/* Jelly bounce animation */
+@keyframes jelly {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05, 0.95); }
+  50% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.02, 0.98); }
+  100% { transform: scale(1); }
+}
+
+/* Jiggle effect */
+@keyframes jiggleY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+body.jiggling {
+  animation: jiggleY 0.3s ease-in-out;
+}
+
+/* Text styling */
+h1, h2, p, li {
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+a {
+  color: #aee2ff;
+  text-decoration: none;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 1em;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+#status {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Background container */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  transition: background 1s ease;
+  overflow: hidden;
+}
+
+/* Time-based backgrounds using your downloaded images */
+.background.morning {
+  background: url('morning.jpg') center center / cover no-repeat;
+}
+
+.background.midday {
+  background: url('midday.jpg') center center / cover no-repeat;
+}
+
+.background.evening {
+  background: url('evening.jpg') center center / cover no-repeat;
+}
+
+.background.night {
+  background: url('night.jpg') center center / cover no-repeat;
+}
+
+/* Cloud layer */
+.cloud-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Cloud animation */
+.cloud {
+  position: absolute;
+  width: 500px;
+  height: auto;
+  opacity: 0.85;
+  animation: floatCloud 120s linear infinite, driftCloud 10s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(-600px); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes driftCloud {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
+}
+
+.cloud:nth-child(1) { top: 10%; left: -600px; animation-delay: 0s, 0s; }
+.cloud:nth-child(2) { top: 30%; left: -600px; animation-delay: 10s, 2s; }
+.cloud:nth-child(3) { top: 50%; left: -600px; animation-delay: 20s, 4s; }
+.cloud:nth-child(4) { top: 70%; left: -600px; animation-delay: 30s, 6s; }
+.cloud:nth-child(5) { top: 85%; left: -600px; animation-delay: 40s, 8s; }
+.cloud:nth-child(6) { top: 95%; left: -600px; animation-delay: 50s, 10s; }
+
+/* Weather overlay */
+#weather-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.rainy #weather-overlay::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.imgur.com/NM4xZtG.png');
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.snowy #weather-overlay::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.imgur.com/3KXQ7Qv.png');
+  background-size: cover;
+  opacity: 0.3;
+}
+
+/* Glassy iframe styling */
+.glass-card iframe {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.glass-card iframe:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 20px;
+    margin: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  input[type="text"] {
+    font-size: 1em;
+    max-width: 100%;
+  }
+
+  .cloud { width: 400px; }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .glass-card {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .cloud { width: 300px; }
+  /* Jiggle on scroll */
+.glass-card.jiggle {
+  animation: jiggleY 0.5s ease-in-out;
+}
+
+@keyframes jiggleY {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-4px); }
+  50% { transform: translateY(4px); }
+  75% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+}
